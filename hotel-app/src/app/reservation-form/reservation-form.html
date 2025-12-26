@@ -1,0 +1,62 @@
+<app-home></app-home>
+
+<h3 class="mt-5 mb-3">Create new reservation</h3>
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    
+    <div class="row">
+        <div class="col mb-3">
+            <div class="form-group">
+                <label for="checkInDate" class="form-label">Check in Date:</label>
+                <input class="form-control" formControlName="checkInDate" type="date" />
+                <small class="text-danger" *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
+                    Check-in date is required.
+                </small>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="checkOutDate" class="form-label">Check out Date:</label>
+                <input class="form-control" formControlName="checkOutDate" type="date" />
+                <small class="text-danger" *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched">
+                    Check-out date is required.
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+     <div class="form-group mb-3">
+        <label for="guestName" class="form-label">Guest Name:</label>
+        <input class="form-control" formControlName="guestName" type="text" />
+        <small class="text-danger" *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
+            Guest name is required.
+        </small>
+    </div>
+        </div>
+        <div class="col-4">
+    <div class="form-group mb-3">
+        <label for="guestEmail" class="form-label">Guest Email:</label>
+        <input class="form-control" formControlName="guestEmail" type="email" />
+        <small class="text-danger" *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched">
+            Valid email is required.
+        </small>
+    </div>
+        </div>
+            <div class="col-4">
+    <div class="form-group mb-3">
+        <label for="roomNumber" class="form-label">Room Number:</label>
+        <input class="form-control" formControlName="roomNumber" type="number" />
+        <small class="text-danger" *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">
+            Room number is required and must be a positive number.
+        </small>
+    </div>
+            </div>
+        </div>
+
+
+
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="reservationForm.invalid">Submit</button>
+</form>

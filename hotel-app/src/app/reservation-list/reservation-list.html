@@ -1,0 +1,44 @@
+<app-home></app-home>
+
+<h2>Reservation List</h2>
+<!-- <ul *ngIf="reservations.length; else noReservations">
+  <li *ngFor="let reservation of reservations">
+    Guest: {{ reservation.guestName }} <br> 
+    Email: {{ reservation.guestEmail }} <br>
+    Check-in Date: {{ reservation.checkInDate }} <br>
+    Check-out Date: {{ reservation.checkOutDate }} <br>
+    Room Number: {{ reservation.roomNumber}} <br>
+    <button (click)="deleteReservation(reservation.id)">Delete</button>
+    <button [routerLink]="['/edit', reservation.id]">Edit</button>
+  </li>
+</ul> -->
+
+<table class="table" *ngIf="reservations.length; else noReservations">
+  <thead>
+    <tr>
+      <th>Guest Name</th>
+      <th>Guest Email</th>
+      <th>Check-in Date</th>
+      <th>Check-out Date</th>
+      <th>Room Number</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.guestName }}</td>
+      <td>{{ reservation.guestEmail }}</td>
+      <td>{{ reservation.checkInDate }}</td>
+      <td>{{ reservation.checkOutDate }}</td>
+      <td>{{ reservation.roomNumber }}</td>
+      <td>
+        <button class="btn btn-danger btn-sm me-2" (click)="deleteReservation(reservation.id)">Delete</button>
+        <button class="btn btn-secondary btn-sm" [routerLink]="['/edit', reservation.id]">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noReservations>
+  <p>No reservations available.</p>
+</ng-template>
